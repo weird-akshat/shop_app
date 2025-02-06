@@ -33,7 +33,11 @@ class HomePage extends StatelessWidget {
                   ),
                 ))
               ],
-            )
+            ),
+            Chip(
+              label: Text('Running'),
+              backgroundColor: Colors.blue,
+            ),
           ],
         ),
       ),
