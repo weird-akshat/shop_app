@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<String> filters =  ['all','nike','adidas','bata'];
+    late String selectedFilter;
+    @override
+     
+    void initState(){
+      super.initState();
+      selectedFilter= filters[0];
+    }
+  @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -31,13 +45,33 @@ class HomePage extends StatelessWidget {
                           BorderRadius.horizontal(left: Radius.circular(40)),
                     ),
                   ),
-                ))
+                ),)
               ],
             ),
-            Chip(
-              label: Text('Running'),
-              backgroundColor: Colors.blue,
-            ),
+            SizedBox(
+              height: 50,
+              child: ListView.builder(scrollDirection: Axis.horizontal, itemCount:filters.length, itemBuilder: (context, index){
+                
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: GestureDetector(
+                    onTap: (){
+                      selectedFilter = filters[index];
+                      setState(() {
+                        
+                      });
+                      
+                    },
+                    child: Chip(
+                      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                      label: Text(filters[index]),
+                      backgroundColor: selectedFilter==filters[index]? Colors.yellow: Colors.white),
+                  ),
+                    
+                );
+              },),
+            )
           ],
         ),
       ),
