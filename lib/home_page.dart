@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/globalvariables.dart';
+import 'package:shop_app/shopping_cards.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -71,8 +73,16 @@ class _HomePageState extends State<HomePage> {
                     
                 );
               },),
-            )
+            ),
+            Expanded(
+              child: ListView.builder(itemCount: products.length, itemBuilder: (context, index) {
+                return ShoppingCards(name: products[index]['title'].toString(), price: products[index]['price'].toString(), image: products[index]['imageUrl'].toString(),
+                color: index%2==0? Colors.white: Colors.grey,);
+              },),
+            ),
+
           ],
+
         ),
       ),
     );
