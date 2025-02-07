@@ -31,7 +31,7 @@ class ShoppingCards extends StatelessWidget {
               children: [
                 Text(name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30,),),
                 Text("\$$price" , style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
-                Image.asset(image, height: 170,),
+                Center(child: Image.asset(image, height: 170,)),
                 
               ],     
           ),
