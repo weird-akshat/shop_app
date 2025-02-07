@@ -17,33 +17,53 @@ class ProductDetailsPage extends StatelessWidget {
         title: Text('Details'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Text(name),
-          Image.asset(image),
-         
-          Container(
-            color: Colors.blue,
-            child: Column(
-              children: [
-                Text('\$$price'),
-                SizedBox(
-                  height: 100,
-                  child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: sizes.length, itemBuilder: (context,index){
-                    
-                    return Chip(label: Text(sizes[index].toString()));
-                  }),
-                ),
-                 ElevatedButton(onPressed: (){}, child: Text("Add to Cart"))
-              ],
-              
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(name, style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            )),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.asset(image, height: 400,),
             ),
-          ),
-          
-         
-
-
-        ],
+           
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.white)
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('\$$price', style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                    ),),
+                  ),
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: sizes.length, itemBuilder: (context,index){
+                      
+                      return Chip(label: Text(sizes[index].toString()));
+                    }),
+                  ),
+                   ElevatedButton(onPressed: (){},style: ButtonStyle(
+                    fixedSize: WidgetStatePropertyAll(Size( 400, 40)),
+                    backgroundColor: WidgetStatePropertyAll(Colors.yellow),
+                   ), child: Text("Add to Cart"))
+                ],
+                
+              ),
+            ),
+            
+           
+        
+        
+          ],
+        ),
       ),
       
     );
