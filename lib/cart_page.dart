@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/globalvariables.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/cart_provider.dart';
+// import 'package:shop_app/globalvariables.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -11,6 +13,8 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
+    print(Provider.of<CartProvider>(context).cart);
+    final cart = Provider.of<CartProvider>(context).cart;
     return Scaffold(
       appBar: AppBar(
         title: Text('Shopping Cart'),
@@ -23,15 +27,23 @@ class _CartPageState extends State<CartPage> {
             return ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage(
-                  cartItem['imageUrl'] as String,
+                  cartItem['image'].toString(),
                 ),
                 radius: 30,
               ),
-              trailing: Icon(
-                Icons.delete,
-                color: Colors.red,
+              trailing: GestureDetector(
+                onTap: () {
+                  print(Provider.of<CartProvider>(context, listen: false)
+                      .cart[index]);
+                  Provider.of<CartProvider>(context, listen: false)
+                      .removeProduct(cart[index]);
+                },
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
               ),
-              title: Text(cartItem['title'] as String),
+              title: Text(cartItem['name'] as String),
               subtitle: Text(cartItem['size'].toString()),
             );
           }),

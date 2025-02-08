@@ -41,11 +41,14 @@ class ShoppingCards extends StatelessWidget {
                 "\$$price",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
-              Center(
-                  child: Image.asset(
-                image,
-                height: 170,
-              )),
+              Expanded(
+                child: Center(
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Image.asset(image),
+                  ),
+                ),
+              )
             ],
           ),
         ),
