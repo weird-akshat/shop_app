@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app/home_page.dart';
-import 'package:shop_app/product_details_page.dart';
 
 void main() {
   runApp(MyApp());

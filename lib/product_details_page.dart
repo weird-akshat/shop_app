@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:shop_app/globalvariables.dart';
+import 'package:shop_app/product_details_page.dart';
+import 'package:shop_app/shopping_cards.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final String name;
